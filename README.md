@@ -22,7 +22,7 @@ go mod download
 gcloud auth application-default login
 ```
 
-4. Create .env file
+4. Create .env file (REGION is optional, but if you deploy with deploy script, it's required) 
 ```bash
 cp .env.example .env
 
@@ -35,3 +35,14 @@ vi .env
 go run cmd/main.go
 ```
 
+## Deploy
+
+1. Set Google Cloud project
+```bash
+gcloud config set project <project-id>
+```
+
+2. Deploy
+```bash
+make deploy
+```
