@@ -26,7 +26,8 @@ func (c *counterService) Increment(ctx context.Context, url string) (*domain.Cou
 	if url == "" {
 		return nil, errors.New("url is required")
 	}
-	r := regexp.MustCompile(`^(http|https)://[a-zA-Z0-9-_.]+.[a-zA-Z0-9-.]+$`)
+
+	r := regexp.MustCompile(`^(http|https)://*`)
 	if !r.MatchString(url) {
 		return nil, errors.New("url is invalid")
 	}

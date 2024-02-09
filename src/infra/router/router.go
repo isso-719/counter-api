@@ -3,7 +3,7 @@ package router
 import (
 	"context"
 	"github.com/isso-719/counter-api/src/adapter/handler"
-	infra "github.com/isso-719/counter-api/src/infra/datastore"
+	"github.com/isso-719/counter-api/src/infra/datastore"
 	"github.com/isso-719/counter-api/src/usecase"
 	"github.com/labstack/echo/v4"
 	"github.com/labstack/echo/v4/middleware"
