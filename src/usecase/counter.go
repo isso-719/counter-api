@@ -36,7 +36,6 @@ func (c *counterService) Increment(ctx context.Context, url string) (*domain.Cou
 	if err != nil {
 		return nil, err
 	}
-	defer c.counterRepository.CommitTx()
 
 	count, err := c.counterRepository.TxRead(url)
 	if err != nil {
@@ -52,6 +51,11 @@ func (c *counterService) Increment(ctx context.Context, url string) (*domain.Cou
 	count.Count++
 
 	_, err = c.counterRepository.TxWrite(url, count)
+	if err != nil {
+		return nil, err
+	}
+
+	err = c.counterRepository.CommitTx()
 	if err != nil {
 		return nil, err
 	}
